@@ -1,0 +1,35 @@
+Classes: 
+Gallery, Auction, User, Auctioneer
+
+Variables Gallery: 
+ArrayList <Auction> liveAucs
+
+Variables Auction: 
+Auctioneer seller
+Double currentPrice
+int startingPrice
+int coinPayout // 10% of currentPrice rounded to lowest whole number
+ArrayList <User> inAuction
+
+Variables User:
+Double balanceCoin // invested coin
+
+Variables Auctioneer:
+ArrayList <String> nonFungInventory
+
+Methods Gallery:
+
+Methods Auctioneer: 
+Boolean createAuction // returns true if auction created, false otherwise. 
+
+Methods Auction:
+void terminate 
+void payoutUser (coinPayout)
+void payoutAuctioneer (seller)
+
+Methods User: 
+
+
+Methods 
+
+
