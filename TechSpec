@@ -3,33 +3,55 @@ Gallery, Auction, User, Auctioneer
 
 Variables Gallery: 
 ArrayList <Auction> liveAucs
+ArrayList <Auction> deadAucs
+User myUser; 
 
 Variables Auction: 
 Auctioneer seller
 Double currentPrice
 int startingPrice
+int initialLength // designated auction time
+int startingTime  // start of auction IRL time
+int endingTime // end of auction IRL time
 int coinPayout // 10% of currentPrice rounded to lowest whole number
 ArrayList <User> inAuction
 
 Variables User:
 Double balanceCoin // invested coin
+String name; 
+String userID; 
 
 Variables Auctioneer:
 ArrayList <String> nonFungInventory
 
 Methods Gallery:
+void addAuction (Auction toAdd)
+boolean myAuction // returns true if user has won the auction
+void removeAuction (Auction toRemove) // removes auction from liveAucs; adds to deadAucs if myAuction is true; 
 
 Methods Auctioneer: 
-Boolean createAuction // returns true if auction created, false otherwise. 
+Boolean createAuction (int length)// returns true if auction created, false otherwise. length is time of auction in hours. 
 
 Methods Auction:
 void terminate 
-void payoutUser (coinPayout)
+void payoutUser (coinPayout) // grants even amounts of payout to inAuction
+void collectBuyer (currentPrice) 
 void payoutAuctioneer (seller)
+void adjustTimer // increases time on timer after late round bid
 
 Methods User: 
+boolean bid (double amount) // (returns true if bid allowed, false otherwise)
+String withdraw (double amount, walletID) // withdraws investedCoin to wallet 
 
 
-Methods 
+Unfeasible: 
+All of the methods above are those that seem somewhat feasible; The following ideas seem unfeasible to me at least
+1. Holding the coin of losing bidders and forcing them to contribute to the winners fee for the auction 
+and then redistributing the funds in terms of invested coin. This would involve many steps
+and would scare users from bidding (their bidded money is not returned in a normal form -- losing a bid is dangerous). 
+2. Enabling the Auctionners to view draft auctions (I would rather just have this be a boolean
+in the Auction class that was true/false for live/not live and could be altered by a auctioneer method ex. void changeLive (Auction xyz)
 
-
+Priority: 
+Prioritize methods that involve core functionalities (constructing each class, creating an auction as an auctioneer, bidding)
+Then work out how to create auction timers, integrate wallets, and determine how the bidding system actually works monetairly. 
