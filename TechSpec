@@ -1,10 +1,17 @@
-Classes: 
-Gallery, Auction, User, Auctioneer
+
+Gallery Class
 
 Variables Gallery: 
 ArrayList <Auction> liveAucs
 ArrayList <Auction> deadAucs
 User myUser; 
+
+Methods Gallery:
+void addAuction (Auction toAdd)
+boolean myAuction // returns true if user has won the auction
+void removeAuction (Auction toRemove) // removes auction from liveAucs; adds to deadAucs if myAuction is true; 
+
+Auction Class
 
 Variables Auction: 
 Auctioneer seller
@@ -16,22 +23,6 @@ int endingTime // end of auction IRL time
 int coinPayout // 10% of currentPrice rounded to lowest whole number
 ArrayList <User> inAuction
 
-Variables User:
-Double balanceCoin // invested coin
-String name; 
-String userID; 
-
-Variables Auctioneer:
-ArrayList <String> nonFungInventory
-
-Methods Gallery:
-void addAuction (Auction toAdd)
-boolean myAuction // returns true if user has won the auction
-void removeAuction (Auction toRemove) // removes auction from liveAucs; adds to deadAucs if myAuction is true; 
-
-Methods Auctioneer: 
-Boolean createAuction (int length)// returns true if auction created, false otherwise. length is time of auction in hours. 
-
 Methods Auction:
 void terminate 
 void payoutUser (coinPayout) // grants even amounts of payout to inAuction
@@ -39,9 +30,28 @@ void collectBuyer (currentPrice)
 void payoutAuctioneer (seller)
 void adjustTimer // increases time on timer after late round bid
 
+User Class
+
+Variables User:
+Double balanceCoin // invested coin
+String name; 
+String userID; 
+
 Methods User: 
 boolean bid (double amount) // (returns true if bid allowed, false otherwise)
 String withdraw (double amount, walletID) // withdraws investedCoin to wallet 
+
+Auctioneer Class
+
+Variables Auctioneer:
+ArrayList <String> nonFungInventory
+
+Methods Auctioneer: 
+Boolean createAuction (int length)// returns true if auction created, false otherwise. length is time of auction in hours. 
+
+
+
+
 
 
 Unfeasible: 
